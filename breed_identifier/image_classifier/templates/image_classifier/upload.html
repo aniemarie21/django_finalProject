@@ -1,0 +1,212 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Breed Identifier</title>
+
+    <!-- Bootstrap CSS (CDN for convenience) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font for modern style -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS for Styling -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1d2a44; /* Dark Navy Blue Background */
+            color: #ffffff; /* White text */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .custom-file-input {
+            cursor: pointer;
+        }
+
+        .custom-file-label {
+            padding: 8px 12px;
+            background-color: #f8f9fa;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .custom-file-label:hover {
+            background-color: #e9ecef;
+        }
+
+        /* Overview Section */
+        .overview-container {
+            background-color: #1a2b3c; /* Darker Navy Blue */
+            text-align: center;
+            color: #fff;
+            padding: 60px 20px;
+            border-bottom: 3px solid #ff8c00; /* Orange accent */
+        }
+
+        .overview-container h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .overview-container p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+        }
+
+        .overview-container .btn {
+            background-color: #ff8c00; /* Orange */
+            color: white;
+            font-size: 1.2rem;
+            padding: 12px 30px;
+            border-radius: 8px;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .overview-container .btn:hover {
+            background-color: #e07b00; /* Darker Orange */
+            transform: scale(1.1);
+        }
+
+        /* Upload Form Section */
+        .container {
+            max-width: 800px;
+            background-color: #2c3e50; /* Dark Navy Blue */
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin: 30px auto;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: #ff8c00; /* Orange */
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #ff8c00;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ff8c00;
+            background-color: #1a2b3c; /* Dark Navy Blue */
+            color: #ffffff;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #ff8c00;
+            box-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
+        }
+
+        /* Upload Button */
+        .btn-upload {
+            background-color: #ff8c00; /* Orange */
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1.2rem;
+            width: 100%;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn-upload:hover {
+            background-color: #e07b00; /* Darker Orange */
+            transform: translateY(-5px);
+        }
+
+        /* Image Preview Section */
+        .file-preview {
+            margin-top: 20px;
+        }
+
+        .file-preview img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .file-preview h3 {
+            font-size: 1.5rem;
+            color: #ff8c00;
+            font-weight: 600;
+        }
+
+        .file-preview p {
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Overview Section -->
+    <div class="overview-container">
+        <h1>Pet Breed Identifier</h1>
+    </div>
+
+    <!-- Upload Form Section -->
+    <div id="upload" class="container">
+        <h2>Upload an Image</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Image Upload Field -->
+            <div class="form-group mb-3">
+                <label for="id_image" class="form-label fw-bold">Choose Image</label>
+                <div class="custom-file">
+                    <input type="file" name="image" id="id_image" class="form-control" accept="image/*" required>
+                </div>
+            </div>
+
+            <!-- Image Preview Section -->
+            <div id="imagePreviewContainer" style="display: none;">
+                <div class="file-preview">
+                    <h3>Image Preview</h3>
+                    <img id="imagePreview" src="" alt="Image Preview" class="img-fluid rounded-3 shadow-sm">
+                    <p><strong>Uploaded Image</strong></p>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-upload">Upload Image</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        // Image Preview Logic
+        document.getElementById('id_image').addEventListener('change', function (e) {
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                var imagePreview = document.getElementById('imagePreview');
+                imagePreview.src = event.target.result;
+                document.getElementById('imagePreviewContainer').style.display = 'block';
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        });
+    </script>
+
+</body>
+</html>
