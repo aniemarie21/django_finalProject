@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,84 +9,58 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Google Font for modern style -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chilanka&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <!-- Custom CSS for Styling -->
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #1d2a44; /* Dark Navy Blue Background */
-            color: #ffffff; /* White text */
+            font-family: 'Chilanka', cursive, 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #FFB6A0, #FFD1A1); /* Soft pet-friendly gradient */
+            color: #4e4e4e; /* Dark grey for text */
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
-        }
-
-        .custom-file-input {
-            cursor: pointer;
-        }
-
-        .custom-file-label {
-            padding: 8px 12px;
-            background-color: #f8f9fa;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .custom-file-label:hover {
-            background-color: #e9ecef;
         }
 
         /* Overview Section */
         .overview-container {
-            background-color: #1a2b3c; /* Darker Navy Blue */
+            background-color: #F19C42; /* Warm orange color */
             text-align: center;
-            color: #fff;
-            padding: 60px 20px;
-            border-bottom: 3px solid #ff8c00; /* Orange accent */
-        }
-
-        .overview-container h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .overview-container p {
-            font-size: 1.25rem;
+            color: white;
+            padding: 60px 20px; /* Reduced padding for smaller header */
+            border-bottom: 3px solid #E67E22; /* Orange accent */
+            position: relative;
             margin-bottom: 30px;
         }
 
-        .overview-container .btn {
-            background-color: #ff8c00; /* Orange */
-            color: white;
-            font-size: 1.2rem;
-            padding: 12px 30px;
-            border-radius: 8px;
-            border: none;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+        .overview-container h1 {
+            font-size: 3.5rem; /* Reduced font size */
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
         }
 
-        .overview-container .btn:hover {
-            background-color: #e07b00; /* Darker Orange */
-            transform: scale(1.1);
+        .overview-container p {
+            font-size: 1.25rem; /* Slightly reduced font size */
+            margin-bottom: 30px;
+            color: #fff;
         }
 
         /* Upload Form Section */
         .container {
             max-width: 800px;
-            background-color: #2c3e50; /* Dark Navy Blue */
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 12px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
             padding: 40px;
             margin: 30px auto;
+            position: relative;
         }
 
         h2 {
-            font-size: 2.2rem;
-            color: #ff8c00; /* Orange */
+            font-size: 2.5rem; /* Increased font size */
+            color: #E67E22; /* Match the button color */
             margin-bottom: 30px;
+            font-weight: 600;
         }
 
         .form-group {
@@ -96,32 +69,32 @@
 
         .form-label {
             font-weight: 600;
-            font-size: 1.1rem;
-            color: #ff8c00;
+            font-size: 1.2rem; /* Increased font size */
+            color: #E67E22;
         }
 
         .form-control {
             border-radius: 8px;
             padding: 15px;
             margin-bottom: 20px;
-            border: 1px solid #ff8c00;
-            background-color: #1a2b3c; /* Dark Navy Blue */
-            color: #ffffff;
+            border: 1px solid #E67E22;
+            background-color: #F9F9F9;
+            color: #4e4e4e;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .form-control:focus {
-            border-color: #ff8c00;
-            box-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
+            border-color: #E67E22;
+            box-shadow: 0 0 5px rgba(230, 126, 34, 0.5);
         }
 
         /* Upload Button */
         .btn-upload {
-            background-color: #ff8c00; /* Orange */
+            background-color: #E67E22;
             color: white;
             border: none;
             padding: 14px 35px;
-            font-size: 1.2rem;
+            font-size: 1.4rem; /* Increased font size */
             width: 100%;
             border-radius: 8px;
             transition: background-color 0.3s ease, transform 0.3s ease;
@@ -129,7 +102,7 @@
         }
 
         .btn-upload:hover {
-            background-color: #e07b00; /* Darker Orange */
+            background-color: #D35400;
             transform: translateY(-5px);
         }
 
@@ -146,15 +119,54 @@
         }
 
         .file-preview h3 {
-            font-size: 1.5rem;
-            color: #ff8c00;
+            font-size: 1.8rem; /* Increased font size */
+            color: #E67E22;
             font-weight: 600;
         }
 
         .file-preview p {
-            font-size: 1.1rem;
-            color: #ffffff;
+            font-size: 1.2rem; /* Increased font size */
+            color: #4e4e4e;
             margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 10px;
+            background-color: #2C3E50;
+            color: #fff;
+            font-size: 1rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: #E67E22;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Paw Stickers */
+        .paw-sticker {
+            position: absolute;
+            bottom: 30px;
+            left: 10px;
+            font-size: 4rem;
+            color: #E67E22;
+            z-index: 5;
+        }
+
+        .paw-sticker-cat {
+            position: absolute;
+            bottom: 20px;
+            right: 10px;
+            font-size: 4rem;
+            color: #A3A3A3; /* Soft gray for cat */
+            z-index: 5;
         }
     </style>
 </head>
@@ -162,17 +174,20 @@
 
     <!-- Overview Section -->
     <div class="overview-container">
-        <h1>Pet Breed Identifier</h1>
+        <h1>🐾Pet Breed Identifier🐾</h1>
+        <p>Upload your pet's photo to identify its breed. Perfect for both dogs and cats!</p>
+        <span class="paw-sticker">🐾</span>
+        <span class="paw-sticker-cat">🐾</span>
     </div>
 
     <!-- Upload Form Section -->
     <div id="upload" class="container">
-        <h2>Upload an Image</h2>
+        <h2>Upload an Image𓃠</h2>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <!-- Image Upload Field -->
             <div class="form-group mb-3">
-                <label for="id_image" class="form-label fw-bold">Choose Image</label>
+                <label for="id_image" class="form-label fw-bold">Choose Image🐾</label>
                 <div class="custom-file">
                     <input type="file" name="image" id="id_image" class="form-control" accept="image/*" required>
                 </div>
@@ -181,15 +196,21 @@
             <!-- Image Preview Section -->
             <div id="imagePreviewContainer" style="display: none;">
                 <div class="file-preview">
-                    <h3>Image Preview</h3>
+                    <h3>Image Preview🐾</h3>
                     <img id="imagePreview" src="" alt="Image Preview" class="img-fluid rounded-3 shadow-sm">
                     <p><strong>Uploaded Image</strong></p>
                 </div>
             </div>
 
-            <button type="submit" class="btn-upload">Upload Image</button>
+            <button type="submit" class="btn-upload">Upload Image🐶</button>
         </form>
     </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Pet Breed Identifier. All Rights Reserved.</p>
+        <p>🦴Anie Marie Arellano🦴Michael Joshua Manga🦴Ira May Baldonado🦴Pauline Mae Garcia🦴</p>
+    </footer>
 
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
