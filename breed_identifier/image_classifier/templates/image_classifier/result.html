@@ -10,61 +10,64 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Google Font for modern style -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chilanka&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- Custom Premium CSS -->
+    <!-- Custom CSS for Styling -->
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #1d2a44; /* Dark Navy Blue Background */
-            color: #ffffff; /* White text */
+            font-family: 'Chilanka', cursive, 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #FFB6A0, #FFD1A1); /* Soft pet-friendly gradient */
+            color: #4e4e4e; /* Dark grey for text */
             margin: 0;
             padding: 0;
         }
 
         /* Overview Section */
         .overview-container {
-            background-color: #1a2b3c; /* Darker Navy Blue */
+            background-color: #F19C42; /* Warm orange color */
             text-align: center;
-            color: #fff;
-            padding: 60px 20px;
-            border-bottom: 3px solid #ff8c00; /* Orange accent */
+            color: white;
+            padding: 60px 20px; /* Reduced padding for smaller header */
+            border-bottom: 3px solid #E67E22; /* Orange accent */
+            position: relative;
+            margin-bottom: 30px;
         }
 
         .overview-container h1 {
-            font-size: 3rem;
+            font-size: 3.5rem; /* Reduced font size */
             font-weight: 700;
             margin-bottom: 20px;
+            color: #fff;
         }
 
         .overview-container p {
-            font-size: 1.25rem;
+            font-size: 1.25rem; /* Slightly reduced font size */
             margin-bottom: 30px;
+            color: #fff;
         }
 
         /* Result Section */
         .container {
             max-width: 800px;
-            background-color: #2c3e50; /* Dark Navy Blue */
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 12px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
             padding: 40px;
-            margin-top: 30px;
-        }
-
-        h1 {
-            color: black; /* Black text color */
-            -webkit-text-stroke: 2px orange; /* Orange border around the text */
-            font-size: 3rem; /* Adjust font size */
-            font-weight: bold; /* Make the text bold */
-            text-align: center; /* Center the text */
-            padding: 10px;
+            margin: 30px auto;
+            position: relative;
         }
 
         h2 {
-            font-size: 2.2rem;
-            color: #ff8c00; /* Orange */
+            font-size: 2.5rem; /* Increased font size */
+            color: #E67E22; /* Match the button color */
             margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .breed-info {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            text-align: center;
         }
 
         .file-preview {
@@ -79,90 +82,118 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .breed-info {
-            font-size: 1.2rem;
-            margin-top: 20px;
-        }
-
-        .breed-info p {
-            font-size: 1.25rem;
-        }
-
-        .description {
-            margin-top: 20px;
-        }
-
-        .description p {
-            font-size: 1.1rem;
-        }
-
-        /* Back Button */
         .back-btn {
             display: inline-block;
-            background-color: #ff8c00; /* Orange */
+            background-color: #E67E22;
             color: white;
-            font-size: 1.2rem;
-            padding: 12px 30px;
+            font-size: 1.4rem;
+            padding: 14px 35px;
+            width: 100%;
             border-radius: 8px;
-            border: none;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
             margin-top: 30px;
             text-align: center;
         }
 
         .back-btn:hover {
-            background-color: #e07b00; /* Darker Orange */
+            background-color: #D35400;
+            transform: translateY(-5px);
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .container {
-                padding: 30px;
-                margin-top: 20px;
-            }
-            .overview-container {
-                padding: 40px 20px;
-            }
-            h1 {
-                font-size: 2.4rem;
-            }
+        footer {
+            text-align: center;
+            padding: 30px 10px;
+            background-color: #2C3E50;
+            color: #fff;
+            font-size: 1rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
 
+        footer a {
+            color: #E67E22;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Paw Stickers */
+        .paw-sticker {
+            position: absolute;
+            bottom: 30px;
+            left: 10px;
+            font-size: 4rem;
+            color: #E67E22;
+            z-index: 5;
+        }
+
+        .paw-sticker-cat {
+            position: absolute;
+            bottom: 20px;
+            right: 10px;
+            font-size: 4rem;
+            color: #A3A3A3; /* Soft gray for cat */
+            z-index: 5;
+        }
     </style>
 </head>
 <body>
 
     <!-- Overview Section -->
     <div class="overview-container">
-        <h1>Pet Breed Identifier</h1>
-        <!-- <p>Our app has identified the breed of your pet</p> -->
+        <h1>🐾Pet Breed Identifier🐾</h1>
+        <p>Upload your pet's photo to identify its breed. Perfect for both dogs and cats!</p>
+        <span class="paw-sticker">🐾</span>
+        <span class="paw-sticker-cat">🐾</span>
     </div>
 
     <!-- Result Section -->
     <div class="container">
-        <h2>Breed Identified</h2>
+        <h2>Breed Identified❓</h2>
 
-        <!-- Display the image after classification -->
+        <!-- Display the uploaded image -->
         <div class="file-preview">
             <img src="{{ image.image.url }}" alt="Uploaded Image" class="img-fluid">
         </div>
 
-        <!-- Display the breed result -->
+        <!-- Display the breed name -->
         <div class="breed-info">
             <p>Identified Breed: <strong>{{ breed }}</strong></p>
         </div>
 
-        <!-- Description of the breed -->
+        <!-- Breed description -->
         <div class="description">
-            <p>This image was analyzed using machine learning to provide the most accurate breed prediction. Find out more about your pet's breed!</p>
+            {% if breed == "Lhasa" %}
+                <p><strong>Lhasa🐾:</strong> The Lhasa Apso is a small dog breed known for its long, flowing coat and spirited personality. Originally bred in Tibet, these dogs are excellent companions and watchdogs.</p>
+            {% elif breed == "pug" %}
+                <p><strong>Pug🐾:</strong> The Pug is a charming and playful breed with a distinctive wrinkled face. They are known for their affectionate and mischievous personality.</p>
+            {% elif breed == "Bernese_mountain_dog" %}
+                <p><strong>Bernese Mountain Dog🐾:</strong> The Bernese Mountain Dog is a large, gentle breed with a tri-colored coat. They are loyal and great family pets, originally bred as working dogs in Switzerland.</p>
+            {% elif breed == "Persian_cat" %}
+                <p><strong>Persian Cat🐾:</strong> Persian cats are known for their luxurious long fur and calm demeanor. They are a popular choice among cat lovers due to their affectionate nature.</p>
+            {% elif breed == "tiger_cat" %}
+                <p><strong>Tiger Cat🐾:</strong> This term often refers to domestic cats with a striped or tabby coat pattern, resembling a tiger. They are active, playful, and make excellent companions.</p>
+            {% else %}
+                <p>No additional details are available for this breed.</p>
+            {% endif %}
         </div>
 
         <!-- Button to go back to upload page -->
-        <a href="{% url 'upload_image' %}" class="back-btn">Upload Another Image</a>
+        <div class="text-center">
+            <a href="{% url 'upload_image' %}" class="back-btn">Upload Another Image</a>
+        </div>
     </div>
 
-    <!-- Bootstrap JS and Popper.js (for any Bootstrap features like modals, dropdowns) -->
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Pet Breed Identifier. All Rights Reserved.</p>
+        <p>🦴Anie Marie Arellano🦴Michael Joshua Manga🦴Ira May Baldonado🦴Pauline Mae Garcia🦴</p>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 
